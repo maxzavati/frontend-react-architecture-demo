@@ -1,0 +1,78 @@
+:root {
+  font-size: 10px; /* Reset for easy rem calculation: so that 10px = 1rem */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --primary: #3e63dd;
+  --white: #ffffff;
+  --black: #000000;
+  --dager: #e5484d;
+  --grey: #b4b4b4;
+
+  --screen-xxs: 375px;
+  --screen-xs: 540px;
+  --screen-sm: 768px;
+  --screen-md: 1024px;
+  --screen-lg: 1440px;
+}
+
+body {
+  min-width: 320px;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: 0;
+}
+
+input,
+textarea {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+ul,
+li {
+  color: inherit;
+  font-family: inherit;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--grey);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--grey);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+}

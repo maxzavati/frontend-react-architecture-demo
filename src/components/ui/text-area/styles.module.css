@@ -1,0 +1,7 @@
+.root {
+  width: 100%;
+  min-height: 22px;
+  max-height: 200px;
+  resize: none;
+  overflow-y: auto;
+}

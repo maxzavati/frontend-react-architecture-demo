@@ -1,0 +1,11 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.error {
+  font-size: 1.4rem;
+  color: var(--danger);
+}

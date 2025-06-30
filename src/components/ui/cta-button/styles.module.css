@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0 1.6rem;
+  border-radius: 8px;
+  line-height: 150%;
+  transition: 0.2s ease;
+}
+
+.root:disabled,
+.root[disabled] {
+  opacity: 0.5;
+  background-color: var(--primary);
+  cursor: initial;
+}
+
+.root.contained {
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+.root:hover {
+  transform: scale(1.02);
+}
+
+.root.outlined {
+  color: var(--primary);
+  background-color: transparent;
+  border: 1px solid var(--primary);
+}
+
+.root.outlined2 {
+  color: var(--primary);
+  background-color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+.root.text {
+  color: var(--primary);
+  background-color: transparent;
+}
