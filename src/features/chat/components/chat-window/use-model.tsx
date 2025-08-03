@@ -1,19 +1,14 @@
 import { useMemo } from 'react';
+import { useMessages } from '../../store';
 import { useParams } from 'react-router-dom';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getChatSessionMessages } from '../../api/endpoints';
-import { useMessages } from '../../store';
 
 const PER_PAGE = 5;
 
 export function useChatWindowModel() {
   const params = useParams();
   const messages = useMessages();
-
-  // const [visibleRange, setVisibleRange] = useState({
-  //   startIndex: 0,
-  //   endIndex: 0,
-  // });
 
   const sessionId = params.id;
 

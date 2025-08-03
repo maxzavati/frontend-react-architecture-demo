@@ -37,13 +37,8 @@ src/
 ├── context/                              # React context providers
 ├── features/                             # Feature-based modules
 │   ├── auth/                             # Authentication feature
-│   │   ├── apis/                         # Feature-specific APIs
-│   │   ├── components/                   # Feature components (MVVM)
-│   │   ├── layout/                       # Feature layouts
-│   │   ├── schemas.ts                    # Validation schemas
-│   │   └── views/                        # Page-level views
 │   └── chat/                             # Chat feature
-│       ├── api/                          # Chat APIs
+│       ├── apis/                         # Chat APIs
 │       ├── components/                   # Chat components (MVVM)
 │       │   └── chat-window/
 │       │       ├── use-model.tsx         # 📊 Model
