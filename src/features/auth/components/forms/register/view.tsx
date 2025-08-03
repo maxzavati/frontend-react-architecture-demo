@@ -1,55 +1,16 @@
-import { useNavigate } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
-import { useMutation } from '@tanstack/react-query';
-import { zodResolver } from '@hookform/resolvers/zod';
-import toast from 'react-hot-toast';
-import { z } from 'zod';
-
 import s from './styles.module.css';
-import { register } from '../../apis/endpoints';
-import { registerFormSchema } from '../../schemas';
+import { Controller } from 'react-hook-form';
 import { Input } from '@/components/ui/input/input';
+import { useRegisterFormViewModel } from './use-view-model';
 import { CTAButton } from '@/components/ui/cta-button/cta-button';
-import { setAccessTokenCookie, setRefreshTokenCookie } from '@/utils/auth';
 
-type Form = z.infer<typeof registerFormSchema>;
-
-export function RegisterForm() {
-  const navigate = useNavigate();
-  const { control, formState, handleSubmit } = useForm<Form>({
-    resolver: zodResolver(registerFormSchema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-    },
-  });
-
-  const submitMutation = useMutation({
-    mutationFn: register,
-    onSuccess: (data) => {
-      setAccessTokenCookie({
-        accessToken: data.accessToken,
-        maxAge: data.accessTokenTtlMs,
-      });
-      setRefreshTokenCookie({
-        refreshToken: data.refreshToken,
-        maxAge: data.refreshTokenTtlMs,
-      });
-      navigate('/');
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-  });
-
-  const onSubmit = (data: Form) => {
-    submitMutation.mutate(data);
-  };
+export function RegisterFormView() {
+  const { model, handleRegister } = useRegisterFormViewModel();
+  const { formMethods, registerMutation } = model;
+  const { control, formState, handleSubmit } = formMethods;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={s.root}>
+    <form onSubmit={handleSubmit(handleRegister)} className={s.root}>
       <Controller
         name='firstName'
         control={control}
@@ -106,11 +67,15 @@ export function RegisterForm() {
           />
         )}
       />
-      <CTAButton type='submit' width='100%' disabled={submitMutation.isPending}>
-        {submitMutation.isPending ? 'Processing...' : 'Sing In'}
+      <CTAButton
+        type='submit'
+        width='100%'
+        disabled={registerMutation.isPending}
+      >
+        {registerMutation.isPending ? 'Processing...' : 'Sign Up'}
       </CTAButton>
-      {submitMutation.error?.message ? (
-        <p className={s.error}>{submitMutation.error.message}</p>
+      {registerMutation.error?.message ? (
+        <p className={s.error}>{registerMutation.error.message}</p>
       ) : null}
     </form>
   );
