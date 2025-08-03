@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import s from './styles.module.css';
-import { login } from '@/apis/auth';
+import { login } from '../../apis/endpoints';
 import { loginFormSchema } from '../../schemas';
 import { Input } from '@/components/ui/input/input';
 import { CTAButton } from '@/components/ui/cta-button/cta-button';

@@ -1,9 +1,9 @@
 import styles from './styles.module.css';
 
 interface Props {
-  size?: 'small' | 'medium' | 'large';
   color?: string;
   className?: string;
+  size?: 'small' | 'medium' | 'large';
 }
 
 export default function Loader({

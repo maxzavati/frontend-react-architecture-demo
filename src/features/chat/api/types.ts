@@ -11,6 +11,13 @@ export interface ChatInitResponse {
   sessionId: string;
 }
 
+export interface ChatSessionMessagesRequest {
+  sessionId: string;
+  page: number;
+  limit: number;
+  search?: string;
+}
+
 export interface ChatAnswerRequest {
   source: ChatSource;
   question: string;
@@ -32,4 +39,18 @@ export interface ChatSessionMessagesResponse {
   }[];
   count: number;
   total: number;
+}
+
+export type ChatMessage = {
+  text: string;
+  role: ChatRole;
+  createdAt: string;
+};
+
+export enum ChatRole {
+  system = 'system',
+  user = 'user',
+  assistant = 'assistant',
+  function = 'function',
+  tool = 'tool',
 }

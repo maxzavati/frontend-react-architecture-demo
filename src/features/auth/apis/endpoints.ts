@@ -3,7 +3,7 @@ import {
   LoginResponse,
   RegisterRequest,
   RegisterResponse,
-} from '@/types/auth';
+} from './types';
 import api from '@/instances/api';
 
 export async function register(
@@ -20,15 +20,5 @@ export async function login(payload: LoginRequest): Promise<LoginResponse> {
 
 export async function logout(): Promise<void> {
   const res = await api.post('/auth/logout');
-  return res.data;
-}
-
-export async function getNewAccessToken(payload: {
-  refreshToken: string;
-}): Promise<{
-  accessToken: string;
-  accessTokenTtlMs: number;
-}> {
-  const res = await api.post('/auth/refresh', payload);
   return res.data;
 }

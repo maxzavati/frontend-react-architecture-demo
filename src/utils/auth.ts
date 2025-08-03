@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { RECORD_PREFIX } from '@/config';
-import { getNewAccessToken } from '@/apis/auth';
+import { getNewAccessToken } from '@/apis/auth/endpoints';
 
 const cookies = new Cookies();
 

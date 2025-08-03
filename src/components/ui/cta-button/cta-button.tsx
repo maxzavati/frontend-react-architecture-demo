@@ -34,7 +34,7 @@ export function CTAButton({
       } ${className}`}
       style={{
         height,
-        width: width,
+        width,
       }}
     >
       {children}

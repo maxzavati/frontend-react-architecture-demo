@@ -3,8 +3,9 @@ import {
   ChatAnswerResponse,
   ChatInitRequest,
   ChatInitResponse,
+  ChatSessionMessagesRequest,
   ChatSessionMessagesResponse,
-} from '@/types/chat';
+} from './types';
 import api from '@/instances/api';
 
 export async function initChatSession(
@@ -22,10 +23,17 @@ export async function sendChatMessage(
 }
 
 export async function getChatSessionMessages(
-  sessionId: string
+  payload: ChatSessionMessagesRequest
 ): Promise<ChatSessionMessagesResponse> {
   const res = await api.get(
-    `/chat/sessions/${sessionId}/messages?page=1&limit=50`
+    `/chat/sessions/${payload.sessionId}/messages?page=${payload.page}&limit=${payload.limit}`
   );
+  return res.data;
+}
+
+export async function chatAnswer(
+  payload: ChatAnswerRequest
+): Promise<ChatAnswerResponse> {
+  const res = await api.post(`/chat/answer`, payload);
   return res.data;
 }

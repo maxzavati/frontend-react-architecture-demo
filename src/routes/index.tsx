@@ -1,5 +1,5 @@
-import { HomeView } from '@/features/home';
+import { ChatHomeView } from '@/features/chat/home/view';
 
 export function IndexRoute() {
-  return <HomeView />;
+  return <ChatHomeView />;
 }

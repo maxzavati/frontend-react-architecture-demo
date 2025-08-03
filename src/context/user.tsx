@@ -1,9 +1,9 @@
 import { createContext, ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { getUser } from '@/apis/user';
-import { UserResponse } from '@/types/user';
 import { getAccessTokenCookie } from '@/utils/auth';
+import { getUser } from '@/apis/user/endpoints';
+import { UserResponse } from '@/apis/user/types';
 
 interface Props {
   children: ReactNode;

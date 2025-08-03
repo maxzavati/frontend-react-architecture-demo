@@ -1,5 +1,5 @@
-import { ChatView } from '@/features/chat';
+import { ChatSessionView } from '@/features/chat/session/view';
 
 export function ChatRoute() {
-  return <ChatView />;
+  return <ChatSessionView />;
 }

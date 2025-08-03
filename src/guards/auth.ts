@@ -1,3 +1,4 @@
+import { getNewAccessToken } from '@/apis/auth/endpoints';
 import {
   isValidToken,
   removeAuthCookies,
@@ -6,7 +7,6 @@ import {
   getRefreshTokenCookie,
 } from '@/utils/auth';
 import { redirect } from 'react-router-dom';
-import { getNewAccessToken } from '@/apis/auth';
 
 export async function authRouteGuard() {
   const accessToken = getAccessTokenCookie();

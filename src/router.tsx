@@ -1,13 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-
-import { indexLoader } from './loaders';
-import { chatAction } from './actions/chat';
-import { chatLoader } from './loaders/chat';
 import { MainLayout } from './layouts/main';
 import { publicLoader } from './loaders/public';
 import Loader from './components/ui/loader/loader';
+import { chatAction } from './features/chat/actions';
 import { AuthLayout } from './features/auth/layout/layout';
+import { chatHomeLoader, chatSessionLoader } from './features/chat/loaders';
 
 const RegisterRoute = lazy(() =>
   import('./routes/register').then((module) => ({
@@ -44,7 +42,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: indexLoader,
+        loader: chatHomeLoader,
         element: (
           <Suspense fallback={<Loader />}>
             <IndexRoute />
@@ -53,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chats/:id',
-        loader: chatLoader,
+        loader: chatSessionLoader,
         action: chatAction,
         element: (
           <Suspense fallback={<Loader />}>
